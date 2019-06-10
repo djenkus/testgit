@@ -1,0 +1,58 @@
+
+
+#!/usr/bin/env python
+import  serial 
+import sys
+import subprocess
+import os
+import time
+
+def get_power():
+
+	#process = subprocess.Popen(["cat /dev/ttyUSB0"], stdout=subprocess.PIPE)
+	#stdout = process.communicate()[0]
+	#ser = serial.Serial('/dev/ttyUSB0', 9600)
+	#time.sleep(3)
+
+	try:
+		print("Trying ttyUSB0..")
+		port = serial.Serial("/dev/ttyUSB0", baudrate=115200)
+
+		tmpData = meterData.split(',')
+"PACL: ttyUSB0 was not found!")
+		try:
+			print("Trying ttyUSB1..")
+			port = serial.Serial("/dev/ttyUSB1", baudrate=115200)
+		except:
+			print("PACL: ttyUSB1 was not found!")
+			try:
+				print("Trying ttyUSB2..")
+				port = serial.Serial("/dev/ttyUSB2", baudrate=115200)	
+			except:
+				print("PACL: ttyUSB2 was not found!")
+				sys.exit()
+        #stdout = str(subprocess.check_output(["cat", "/dev/ttyUSB0"]))                                                              print(fnf_error)
+
+#else:
+   # try:
+   #     with open('file.log') as file:
+   #         read_data = file.read()
+   # except FileNotFoundError as fnf_error:
+       # print(fnf_error)
+
+	#data = ser.readline()
+	#ser.close()
+	
+	if power:
+		print(power)
+	#stdout = str(subprocess.check_output(["cat", "/dev/ttyUSB0"]))
+	return power #float(stdout)
+
+def main():
+
+	pwr = get_power()
+	print(pwr)
+
+if __name__ == '__main__':
+	main()
+

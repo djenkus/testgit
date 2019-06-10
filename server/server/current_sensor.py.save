@@ -1,0 +1,43 @@
+
+#!/usr/bin/env python
+import serial
+import sys
+import subprocess
+import os
+import time
+
+def get_power():
+
+	#process = subprocess.Popen(["cat /dev/ttyUSB0"], stdout=subprocess.PIPE)
+	#stdout = process.communicate()[0]
+	#ser = serial.Serial('/dev/ttyUSB0', 9600)
+	#time.sleep(3)
+	
+	#data = ser.readline()
+	#ser.close()
+	
+	port = serial.Serial("/dev/ttyUSB0", baudrate=115200)
+                                                                                                                              
+                                                                                                                                                                                           
+                                                                                                                             power = rcv.split(',')
+                                                                                                                             #port.close()
+                                                                                                                             print(rcv)
+                                                                                                                             print(power[2])
+
+
+
+	if data:
+		print(data)
+	
+
+	#stdout = str(subprocess.check_output(["cat", "/dev/ttyUSB0"]))
+	#return data #float(stdout)
+
+def main():
+
+	pwr = get_power()
+	print(pwr)
+
+if __name__ == '__main__':
+	main()
+

@@ -1,0 +1,27 @@
+
+{
+  "CPUFREQ": {
+    "PATH": "/sys/devices/system/cpu/"
+  },
+  "CPU":{
+
+  	"CPU0": {
+		"CLUSTER": "0",
+    	"PATH": "cpu0/cpufreq/",
+		"SET_FREQ": "scaling_setspeed",
+		"CURRENT_FREQ": "scaling_cur_freq",
+		"FREQ_LIST": "scaling_available_frequencies",
+		"GOVERNOR": "scaling_governor"
+	
+  },
+  	"CPU4": {
+		"CLUSTER": "1",
+    	"PATH": "cpu4/cpufreq/",
+		"SET_FREQ": "scaling_setspeed",
+		"CURRENT_FREQ": "scaling_cur_freq",
+		"FREQ_LIST": "scaling_available_frequencies",
+		"GOVERNOR": "scaling_governor"
+			
+  		}
+	}
+}

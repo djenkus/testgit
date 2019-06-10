@@ -1,0 +1,62 @@
+
+import sys
+import os
+import subprocess
+import serial
+
+
+
+
+def get_sensor():
+
+	if(ser.isOpen() == False):
+		try:
+			ser = serial.Serial('/dev/ttyUSB0', 115200)
+		except:
+			try:
+				ser = serial.Serial('/dev/ttyUSB1',115200)
+			except:
+				try:
+					ser = serial.Serial('/dev/ttyUSB2',115200)
+
+				except:
+					print("PACL: could not open current sensor port!")
+					sys.exit()
+
+	else:
+		print("port is already opened!")
+
+# read sensor
+	tmp = ser.read(23)
+
+	if tmp:
+		print(tmp)
+		readings = tmp.split(',')
+	else:
+		print("PACL: Sensor data was not obtained")
+		sys.exit()
+
+	# close serial connection
+	ser.close()
+
+	return readings
+
+
+def get_power():
+	power = get_sensor()
+	return power[2]
+
+def get_current():
+	current = get_sensor()
+	return current[1]
+
+
+def main():
+
+	pwr = get_power()
+	print("Power = {} " .format(pwr))
+	print("Current = {}".format(get_current()))
+	
+
+if __name__ == '__main__':
+	main()
